@@ -58,15 +58,15 @@ class LoginScreen extends StatelessWidget {
                 const Text(
                   "Login",
                   style: TextStyle(
-                    fontSize: 32,
+                    fontSize: 50,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  "Good to see you back! ❤️",
+                  "Good to see you back! 🖤",
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 20,
                     color: Colors.grey,
                   ),
                 ),
@@ -99,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                     child: const Text(
                       "Next",
                       style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
