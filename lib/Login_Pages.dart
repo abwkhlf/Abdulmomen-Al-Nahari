@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'Login_tow.dart';
 import 'Widget_Button.dart';
 import 'Widget_Image.dart';
 import 'Widget_Input.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +30,13 @@ class LoginScreen extends StatelessWidget {
                 'top': 100.0,
                 'left': null,
                 'right': -65.0,
+                'width': 200.0
+              },
+              {
+                'imagePath': 'Images/bubble 04.png',
+                'top': 580.0,
+                'left': null,
+                'right': 5.0,
                 'width': 200.0
               },
             ],
@@ -68,7 +74,12 @@ class LoginScreen extends StatelessWidget {
                   child: CustomButton(
                     text: "Next",
                     color: Colors.blue,
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PasswordPage()));
+                    },
                   ),
                 ),
                 const SizedBox(height: 8),
