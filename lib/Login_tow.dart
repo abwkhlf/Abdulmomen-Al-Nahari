@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Password_page.dart';
+import 'Widget%20and%20text.dart';
 import 'Widget_Image.dart';
 
 class PasswordPage extends StatelessWidget {
@@ -29,40 +31,9 @@ class PasswordPage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 80),
-                Stack(
-                  children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 60),
-                        child: CircleAvatar(
-                          radius: 70,
-                          backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 60,
-                            backgroundImage:
-                                AssetImage('Images/artist-2 1.png'),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Hello, Romina!!",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  "Type your password",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
-                  ),
+                WidgetImages(
+                  imagePath: 'Images/artist-2 1.png',
+                  name: "Hello, Romina!!",
                 ),
                 const SizedBox(height: 40),
                 Row(
@@ -93,7 +64,12 @@ class PasswordPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Password()));
+                      },
                       child: const CircleAvatar(
                         backgroundColor: Colors.blue,
                         radius: 20,
@@ -105,7 +81,6 @@ class PasswordPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
               ],
             ),
           ),
