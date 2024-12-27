@@ -68,16 +68,12 @@ class LoginScreen extends StatelessWidget {
                   child: CustomButton(
                     text: "Next",
                     color: Colors.blue,
-                    onPressed: () {
-                      // Add your logic here
-                    },
+                    onPressed: () {},
                   ),
                 ),
                 const SizedBox(height: 8),
                 TextButton(
-                  onPressed: () {
-                    // Add your logic here
-                  },
+                  onPressed: () {},
                   child: const Center(
                     child: Text(
                       "Cancel",
