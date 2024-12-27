@@ -41,7 +41,7 @@ class LoginScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 100),
+                const SizedBox(height: 450),
                 const Text(
                   "Login",
                   style: TextStyle(
@@ -62,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                   hintText: "Email",
                   keyboardType: TextInputType.emailAddress,
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: 80),
                 SizedBox(
                   width: double.infinity,
                   child: CustomButton(
