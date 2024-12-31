@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'Widget and text.dart';
 import 'Widget_Image.dart';
+import 'password_tow.dart';
 
 class Password extends StatelessWidget {
   @override
@@ -57,6 +58,36 @@ class Password extends StatelessWidget {
                 ),
                 const Spacer(),
               ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(width: 10),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Password_tow(),
+                        ),
+                      );
+                    },
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.blue,
+                      radius: 20,
+                      child: Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
