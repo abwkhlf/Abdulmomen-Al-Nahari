@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:versomarket/core/util/ScreenUtil.dart';
 import 'package:versomarket/core/util/common.dart';
 import 'package:versomarket/features/Product/presintation/page/productsPage.dart';
-import 'package:versomarket/features/Registration/presintation/page/LoginPage.dart';
 import '../../../../injection_container.dart';
 import '../manager/Registration_bloc.dart';
 
