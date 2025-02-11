@@ -6,6 +6,8 @@ import 'package:versomarket/features/Product/data/repository/ProductRepository.d
 import 'package:versomarket/features/Product/presintation/manager/Product_bloc.dart';
 import 'package:versomarket/features/ProductDeatils/data/repository/ProductDeatilsRepository.dart';
 import 'package:versomarket/features/ProductDeatils/presintation/manager/ProductDeatils_bloc.dart';
+import 'package:versomarket/features/Registration/data/repository/RegistrationRepository.dart';
+import 'package:versomarket/features/Registration/presintation/manager/Registration_bloc.dart';
 
 import 'dataProviders/local_data_provider.dart';
 import 'dataProviders/network/Network_info.dart';
@@ -37,6 +39,7 @@ Future<void> init() async {
   // _initExtermination_blocFeature();
   _initProduct_blocFeature();
   _initProductDeatils_blocFeature();
+  _initRegistration_blocFeature();
 
   ///service provider
 
@@ -73,13 +76,13 @@ void _initProduct_blocFeature() {
   );
 }
 
-void _initCategories_blocFeature() {
+void _initRegistration_blocFeature() {
 //bloc
-  sl.registerFactory(() => Product_bloc(repository: sl()));
+  sl.registerFactory(() => Registration_bloc(repository: sl()));
 
   //repositories
-  sl.registerLazySingleton<ProductRepository>(
-    () => ProductRepository(
+  sl.registerLazySingleton<RegistrationRepository>(
+    () => RegistrationRepository(
       remoteDataProvider: sl(),
       localDataProvider: sl(),
       networkInfo: sl(),
