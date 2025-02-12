@@ -1,3 +1,17 @@
+// قسم buildscript لتعريف الاعتمادات الأساسية
+buildscript {
+    ext.kotlin_version = '1.9.0' // تحديث إصدار Kotlin إذا لزم الأمر
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.0' // تحديث Android Gradle Plugin
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+// قسم allprojects لتحديد المستودعات المشتركة لجميع المشاريع الفرعية
 allprojects {
     repositories {
         google()
@@ -5,7 +19,11 @@ allprojects {
     }
 }
 
+// تهيئة مجلدات البناء
 rootProject.buildDir = '../build'
+
+
+
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
@@ -13,6 +31,7 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
+// تعريف مهمة clean لحذف مجلدات البناء
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
