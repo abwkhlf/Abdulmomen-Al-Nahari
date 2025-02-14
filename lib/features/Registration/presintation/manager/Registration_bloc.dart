@@ -43,7 +43,6 @@ class Registration_bloc
     if (event is loginEvent) {
       yield loginLoading();
       final failureOrData = await repository.login(event.username, event.password);
-
       yield* failureOrData.fold(
             (failure) async* {
           log('yield is error');

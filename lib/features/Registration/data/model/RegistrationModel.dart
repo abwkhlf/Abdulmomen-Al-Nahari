@@ -22,6 +22,7 @@ class RegistrationModel {
         token: '');
   }
 
+
   fromJsonList(List<dynamic> jsonList) {
     List<RegistrationModel> data = [];
     for (var post in jsonList) {

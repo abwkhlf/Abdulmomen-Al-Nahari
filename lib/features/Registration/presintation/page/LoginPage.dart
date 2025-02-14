@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:versomarket/core/util/ScreenUtil.dart';
 import 'package:versomarket/core/util/common.dart';
 import 'package:versomarket/features/Product/presintation/page/productsPage.dart';
-import 'package:versomarket/features/Registration/presintation/page/LoginPage.dart';
+import '../../../../core/AppTheme.dart';
 import '../../../../injection_container.dart';
 import '../manager/Registration_bloc.dart';
+import 'SinupPage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -29,7 +30,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     screenUtil.init(context);
     return Scaffold(
-      appBar: AppBar(title: Text("تسجيل الدخول"),),
+      appBar: AppBar(
+        backgroundColor: AppTheme.deepOrange,
+        title: Text("تسجيل الدخول",style: TextStyle(
+            fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.black),
+        ),
+      ),
       body: BlocProvider(
         create: (context) => sl<Registration_bloc>(),
         child: BlocConsumer<Registration_bloc, RegistrationState>(
@@ -88,40 +94,146 @@ class _LoginPageState extends State<LoginPage> {
 
           },
           builder: (context, state) {
-
-
-            return
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+            return SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(24.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  textDirection: TextDirection.rtl,
                   children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: CircleAvatar(
+                        radius: 60,
+                        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                        child: Icon(
+                          Icons.person_rounded,
+                          size: 60,
+                          color: AppTheme.primaryColor,
+                        ),
+                      ),
+                    ),
+
+                    const SizedBox(height: 32),
                     TextFormField(
                       controller: _usrnameController,
+                      textAlign: TextAlign.right,
+                      textDirection: TextDirection.rtl,
                       decoration: InputDecoration(
                         labelText: "اسم المستخدم",
-                        border: OutlineInputBorder(),
+                        floatingLabelAlignment: FloatingLabelAlignment.start,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Icon(Icons.person_outline),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey.shade50,
+                        contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                       ),
                     ),
+
+                    const SizedBox(height: 20),
                     TextFormField(
                       controller: _passwordController,
+                      textAlign: TextAlign.right,
+                      textDirection: TextDirection.rtl,
+                      obscureText: true,
                       decoration: InputDecoration(
                         labelText: "كلمة المرور",
-                        border: OutlineInputBorder(),
+                        floatingLabelAlignment: FloatingLabelAlignment.start,
+                        prefixIcon: Padding(
+                          padding: const EdgeInsets.only(left: 16),
+                          child: Icon(Icons.lock_outline),
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide(color: Colors.grey.shade300),
+                        ),
+                        filled: true,
+                        fillColor: Colors.grey.shade50,
+                        contentPadding: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                       ),
-                      obscureText: true,
                     ),
-                    SizedBox(height: 24),
-                    ElevatedButton(
+
+                    const SizedBox(height: 32),
+                    Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: ElevatedButton(
                       onPressed: () {
-                        BlocProvider.of<Registration_bloc>(context).add(loginEvent(username: _usrnameController.text, password: _passwordController.text));
+                        BlocProvider.of<Registration_bloc>(context).add(
+                          loginEvent(
+                            username: _usrnameController.text,
+                            password: _passwordController.text,
+                          ),
+                        );
                       },
-                      child: Text("تسجيل الدخول"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppTheme.primaryColor,
+                        padding: const EdgeInsets.symmetric(vertical: 16),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        elevation: 2,
+                      ),
+                      child: const Text(
+                        "تسجيل الدخول",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                          letterSpacing: 0.5,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+
+                    const SizedBox(height: 24),
+                    Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Product()),
+                              );
+                            },
+                            borderRadius: BorderRadius.circular(8),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                "سجل الآن",
+                                style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Text(
+                            "ليس لديك حساب؟",
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
-              );
-            return ProductWidget;
+              ),
+            );
           },
         ),
       ),

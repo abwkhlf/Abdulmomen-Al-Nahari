@@ -4,17 +4,17 @@ class AppTheme {
   ///colors
   static const Color primaryColor = Color(0xFFDC6465);
 
-  static MaterialColor primarySwatch = MaterialColor(Color(0xFFDC6465).value, {
-    50: const Color(0xFFDC6465).withOpacity(.05),
-    100: const Color(0xFFDC6465).withOpacity(.1),
-    200: const Color(0xFFDC6465).withOpacity(.2),
-    300: const Color(0xFFDC6465).withOpacity(.3),
-    400: const Color(0xFFDC6465).withOpacity(.4),
-    500: const Color(0xFFDC6465).withOpacity(.5),
-    600: const Color(0xFFDC6465).withOpacity(.6),
-    700: const Color(0xFFDC6465).withOpacity(.7),
-    800: const Color(0xFFDC6465).withOpacity(.8),
-    900: const Color(0xFFDC6465).withOpacity(.9)
+  static MaterialColor primarySwatch = MaterialColor(Color(0xFFE64A19).value, {
+    50: const Color(0xFFE64A19).withOpacity(.05),
+    100: const Color(0xFFE64A19).withOpacity(.1),
+    200: const Color(0xFFE64A19).withOpacity(.2),
+    300: const Color(0xFFE64A19).withOpacity(.3),
+    400: const Color(0xFFE64A19).withOpacity(.4),
+    500: const Color(0xFFE64A19).withOpacity(.5),
+    600: const Color(0xFFE64A19).withOpacity(.6),
+    700: const Color(0xFFE64A19).withOpacity(.7),
+    800: const Color(0xFFE64A19).withOpacity(.8),
+    900: const Color(0xFFE64A19).withOpacity(.9)
   });
 
   static const Color secondaryColor = Color(0xFFFFFFFF);

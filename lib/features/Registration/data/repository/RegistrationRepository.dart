@@ -36,6 +36,7 @@ class RegistrationRepository extends Repository {
         getCacheDataFunction: () async {});
   }
 
+
   Future<Either<Failure, dynamic>> login(String username, String password) async {
     return await sendRequest(
         checkConnection: networkInfo.isConnected,
@@ -54,4 +55,6 @@ class RegistrationRepository extends Repository {
         },
         getCacheDataFunction: () async {});
   }
+
+
 }
