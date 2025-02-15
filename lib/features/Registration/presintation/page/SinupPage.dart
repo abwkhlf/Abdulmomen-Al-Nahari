@@ -23,6 +23,7 @@ class _LoginPageState extends State<SinupPage> {
   Widget ProductWidget = Container();
   ScreenUtil screenUtil = ScreenUtil();
 
+  bool _obscurePassword = true;
 
   final TextEditingController _usrnameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -163,13 +164,20 @@ class _LoginPageState extends State<SinupPage> {
                       controller: _passwordController,
                       textAlign: TextAlign.right,
                       textDirection: TextDirection.rtl,
-                      obscureText: true,
+                      obscureText: _obscurePassword,
                       decoration: InputDecoration(
                         labelText: "كلمة المرور",
                         floatingLabelAlignment: FloatingLabelAlignment.start,
                         prefixIcon: Padding(
                           padding: const EdgeInsets.only(left: 16),
                           child: Icon(Icons.lock_outline),
+                        ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscurePassword ? Icons.visibility_off : Icons.visibility,
+                            color: Colors.grey,
+                          ),
+                          onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
