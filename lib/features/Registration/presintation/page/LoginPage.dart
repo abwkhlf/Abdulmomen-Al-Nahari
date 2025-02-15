@@ -203,7 +203,7 @@ class _LoginPageState extends State<LoginPage> {
                             onTap: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => Product()),
+                                MaterialPageRoute(builder: (context) => SinupPage()),
                               );
                             },
                             borderRadius: BorderRadius.circular(8),
