@@ -28,7 +28,7 @@ class Product_bloc extends Bloc<ProductEvent, ProductState> {
         (data) async* {
           log('yield is loaded');
           yield ProductILoaded(
-            productModel: data,
+            productModel: data ??[],
           );
         },
       );

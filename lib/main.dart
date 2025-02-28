@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:versomarket/dataProviders/repository.dart';
-import 'package:versomarket/features/Product/presintation/page/productsPage.dart';
+import 'package:versomarket/features/Home/presintation/page/HomePage.dart';
 import 'package:versomarket/features/Registration/presintation/page/LoginPage.dart';
-import 'package:versomarket/features/Registration/presintation/page/SinupPage.dart';
 import 'core/util/common.dart';
 import 'injection_container.dart' as object;
 late final String token;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await object.init();
-  token = await getCachedData(key: "token", retrievedDataType: String, returnType: String)??"";
+  token = await getCachedData(key: "token", retrievedDataType: String, returnType: "") ?? "";
   runApp(const MyApp());
 }
 
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:token==""? SinupPage() : Product(),
+      home:token==""? LoginPage() : homePage(),
     );
   }
 }

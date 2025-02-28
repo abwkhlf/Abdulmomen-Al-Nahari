@@ -4,7 +4,7 @@ import 'package:versomarket/features/Product/data/model/ProductModel.dart';
 import 'package:versomarket/features/ProductDeatils/presintation/page/ProductDeatilsPage.dart';
 
 class ProductCard extends StatefulWidget {
-  ProductModel productModel;
+  final ProductModel productModel;
 
   ProductCard({super.key, required this.productModel});
 
@@ -23,8 +23,8 @@ class _ProductCardState extends State<ProductCard> {
             context,
             MaterialPageRoute(
                 builder: (context) => ProductDeatilsPage(
-                      id: widget.productModel.id.toString(),
-                    )));
+                  id: widget.productModel.id.toString(),
+                )));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -42,6 +42,7 @@ class _ProductCardState extends State<ProductCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // الحفاظ على Expanded حول Stack
             Expanded(
               child: Stack(
                 children: [

@@ -33,7 +33,7 @@ class _ProductPageState extends State<Product> {
         title: Text(
           'Product',
           style: TextStyle(
-              fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.black),
+              fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.white),
         ),
       ),
       body: BlocProvider(

@@ -34,7 +34,7 @@ class _LoginPageState extends State<SinupPage> {
       appBar: AppBar(
         backgroundColor: AppTheme.deepOrange,
         title: Text("تسجيل حساب",style: TextStyle(
-          fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.black),
+            fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.white),
         ),
       ),
       body: BlocProvider(
@@ -192,13 +192,24 @@ class _LoginPageState extends State<SinupPage> {
                     SizedBox(height: 32),
                     ElevatedButton(
                       onPressed: () {
-                        BlocProvider.of<Registration_bloc>(context).add(
-                          sinupEvent(
-                            username: _usrnameController.text,
-                            email: _emailController.text,
-                            password: _passwordController.text,
-                          ),
-                        );
+                        try {
+                          BlocProvider.of<Registration_bloc>(context).add(
+                            sinupEvent(
+                              username: _usrnameController.text,
+                              email: _emailController.text,
+                              password: _passwordController.text,
+                            ),
+                          );
+                        } catch (e) {
+                          AwesomeDialog(
+                            context: context,
+                            dialogType: DialogType.error,
+                            animType: AnimType.rightSlide,
+                            title: 'خطأ',
+                            desc: 'حدث خطأ أثناء محاولة التسجيل. يرجى المحاولة مرة أخرى.',
+                            btnOkOnPress: () {},
+                          )..show();
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppTheme.primaryColor,
@@ -246,7 +257,7 @@ class _LoginPageState extends State<SinupPage> {
                   ],
                 ),
               ),
-            );            return ProductWidget;
+            );
           },
         ),
       ),
@@ -255,7 +266,6 @@ class _LoginPageState extends State<SinupPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

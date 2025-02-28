@@ -12,13 +12,16 @@ import 'package:versomarket/features/Registration/presintation/manager/Registrat
 import 'dataProviders/local_data_provider.dart';
 import 'dataProviders/network/Network_info.dart';
 import 'dataProviders/remote_data_provider.dart';
+import 'features/Home/data/repository/HomeRepository.dart';
+import 'features/Home/presintation/manager/Home_bloc.dart';
 
 final sl = GetIt.instance;
+
 Future<void> init() async {
   print('start injection');
 
-//  ! Features
-//   _initRegisterFeature();
+  //  ! Features
+  //   _initRegisterFeature();
 
   // client = await getSSLPinningClient();
   // _initCountry_blocFeature();
@@ -40,6 +43,7 @@ Future<void> init() async {
   _initProduct_blocFeature();
   _initProductDeatils_blocFeature();
   _initRegistration_blocFeature();
+  _initHome_blocFeature();
 
   ///service provider
 
@@ -49,10 +53,10 @@ Future<void> init() async {
 
   // data sources
   sl.registerLazySingleton<RemoteDataProvider>(
-      () => RemoteDataProvider(client: sl()));
+          () => RemoteDataProvider(client: sl()));
 
   sl.registerLazySingleton<LocalDataProvider>(
-      () => LocalDataProvider(sharedPreferences: sl()));
+          () => LocalDataProvider(sharedPreferences: sl()));
 
   //! External
   final sharedPreferences = await SharedPreferences.getInstance();
@@ -63,12 +67,12 @@ Future<void> init() async {
 }
 
 void _initProduct_blocFeature() {
-//bloc
+  //bloc
   sl.registerFactory(() => Product_bloc(repository: sl()));
 
   //repositories
   sl.registerLazySingleton<ProductRepository>(
-    () => ProductRepository(
+        () => ProductRepository(
       remoteDataProvider: sl(),
       localDataProvider: sl(),
       networkInfo: sl(),
@@ -77,12 +81,12 @@ void _initProduct_blocFeature() {
 }
 
 void _initRegistration_blocFeature() {
-//bloc
+  //bloc
   sl.registerFactory(() => Registration_bloc(repository: sl()));
 
   //repositories
   sl.registerLazySingleton<RegistrationRepository>(
-    () => RegistrationRepository(
+        () => RegistrationRepository(
       remoteDataProvider: sl(),
       localDataProvider: sl(),
       networkInfo: sl(),
@@ -91,12 +95,26 @@ void _initRegistration_blocFeature() {
 }
 
 void _initProductDeatils_blocFeature() {
-//bloc
+  //bloc
   sl.registerFactory(() => ProductDeatils_bloc(repository: sl()));
 
   //repositories
   sl.registerLazySingleton<ProductDeatilsRepository>(
-    () => ProductDeatilsRepository(
+        () => ProductDeatilsRepository(
+      remoteDataProvider: sl(),
+      localDataProvider: sl(),
+      networkInfo: sl(),
+    ),
+  );
+}
+
+void _initHome_blocFeature() {
+  //bloc
+  sl.registerFactory(() => Home_bloc(repository: sl()));
+
+  //repositories
+  sl.registerLazySingleton<HomeRepository>(
+        () => HomeRepository(
       remoteDataProvider: sl(),
       localDataProvider: sl(),
       networkInfo: sl(),

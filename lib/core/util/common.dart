@@ -25,6 +25,7 @@ getCachedData(
         returnType: returnType);
   } catch (e) {
     print(e);
+    return returnType;
   }
 }
 

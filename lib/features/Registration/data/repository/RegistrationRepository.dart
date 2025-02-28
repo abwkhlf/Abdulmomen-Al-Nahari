@@ -13,8 +13,8 @@ class RegistrationRepository extends Repository {
   final LocalDataProvider localDataProvider;
   RegistrationRepository(
       {required this.remoteDataProvider,
-      required this.networkInfo,
-      required this.localDataProvider});
+        required this.networkInfo,
+        required this.localDataProvider});
 
   Future<Either<Failure, dynamic>> sinUp(String username, String email, String password) async {
     return await sendRequest(

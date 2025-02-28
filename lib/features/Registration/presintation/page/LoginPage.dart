@@ -26,7 +26,6 @@ class _LoginPageState extends State<LoginPage> {
   bool _obscurePassword = true;
 
   final TextEditingController _usrnameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   Widget build(BuildContext context) {
     screenUtil.init(context);
@@ -34,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         backgroundColor: AppTheme.deepOrange,
         title: Text("تسجيل الدخول",style: TextStyle(
-            fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.black),
+            fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.white),
         ),
       ),
       body: BlocProvider(
@@ -67,7 +66,6 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               )..show();
             }
-
             if (state is loginLoaded) {
               AwesomeDialog(
                 context: context,
@@ -92,7 +90,6 @@ class _LoginPageState extends State<LoginPage> {
               cachedData(key: "token", data: state.registrationModel.token);
               Navigator.push(context, MaterialPageRoute(builder: (context) => Product()));
             }
-
           },
           builder: (context, state) {
             return SingleChildScrollView(
@@ -169,36 +166,47 @@ class _LoginPageState extends State<LoginPage> {
 
                     const SizedBox(height: 32),
                     Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        BlocProvider.of<Registration_bloc>(context).add(
-                          loginEvent(
-                            username: _usrnameController.text,
-                            password: _passwordController.text,
+                      textDirection: TextDirection.rtl,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          try {
+                            BlocProvider.of<Registration_bloc>(context).add(
+                              loginEvent(
+                                username: _usrnameController.text,
+                                password: _passwordController.text,
+                              ),
+                            );
+                          } catch (e) {
+                            AwesomeDialog(
+                              context: context,
+                              dialogType: DialogType.error,
+                              animType: AnimType.rightSlide,
+                              title: 'خطأ',
+                              desc: 'حدث خطأ أثناء محاولة تسجيل الدخول. يرجى المحاولة مرة أخرى.',
+                              btnOkOnPress: () {},
+                            )..show();
+                          }
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: AppTheme.primaryColor,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppTheme.primaryColor,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          elevation: 2,
                         ),
-                        elevation: 2,
-                      ),
-                      child: const Text(
-                        "تسجيل الدخول",
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          letterSpacing: 0.5,
+                        child: const Text(
+                          "تسجيل الدخول",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                            letterSpacing: 0.5,
+                          ),
+                          textAlign: TextAlign.center,
                         ),
-                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
 
                     const SizedBox(height: 24),
                     Directionality(
@@ -249,7 +257,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

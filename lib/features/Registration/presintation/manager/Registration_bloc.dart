@@ -4,9 +4,6 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:versomarket/dataProviders/error/failures.dart';
-import 'package:versomarket/features/ProductDeatils/data/model/ProductDeatilsModel.dart';
-import 'package:versomarket/features/ProductDeatils/data/repository/ProductDeatilsRepository.dart';
-import 'package:versomarket/features/ProductDeatils/presintation/manager/ProductDeatils_bloc.dart';
 import 'package:versomarket/features/Registration/data/model/RegistrationModel.dart';
 
 import '../../data/repository/RegistrationRepository.dart';
