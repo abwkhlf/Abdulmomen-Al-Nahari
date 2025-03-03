@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:versomarket/core/AppTheme.dart';
 import 'package:versomarket/core/util/ScreenUtil.dart';
 import '../../../../injection_container.dart';
+import '../../../Product/presintation/page/productsPage.dart';
 import '../manager/Home_bloc.dart';
 class homePage extends StatefulWidget {
   homePage({super.key});
@@ -31,6 +32,68 @@ class _homePageState extends State<homePage> {
           'Home Page',
           style: TextStyle(
               fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.white),
+        ),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: AppTheme.white),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          },
+        ),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: AppTheme.deepOrange,
+              ),
+              child: Text(
+                'القائمة',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24, fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.home,
+                color: AppTheme.deepOrange,
+              ),
+              title: Text(
+                'الصفحة الرئيسية',
+                style: TextStyle(color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (Context) => homePage()));
+              },
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.shopping_cart,
+                color: AppTheme.deepOrange,
+              ),
+              title: Text(
+                'المتجات',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold
+                ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Product()));
+              },
+            ),
+          ],
         ),
       ),
       body: Column(
@@ -61,8 +124,6 @@ class _homePageState extends State<homePage> {
                 }
 
                 if (state is carouselLoaded) {
-                  //TODO::Show home here
-
                   return Column(
                     children: [
                       CarouselSlider(
@@ -107,7 +168,6 @@ class _homePageState extends State<homePage> {
                                     ),
                                   ),
                                 ],
-
                               );
                             },
                           );
@@ -147,8 +207,6 @@ class _homePageState extends State<homePage> {
                 }
 
                 if (state is categoriesLoaded) {
-                  //TODO::Show home here
-
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -192,7 +250,6 @@ class _homePageState extends State<homePage> {
                       ),
                     ],
                   );
-;
                 }
 
                 return homeWidget;
@@ -225,8 +282,6 @@ class _homePageState extends State<homePage> {
                 }
 
                 if (state is featuredProductsLoaded) {
-                  //TODO::Show home here
-
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -313,7 +368,7 @@ class _homePageState extends State<homePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
+// TODO: implement initState
     super.initState();
   }
 

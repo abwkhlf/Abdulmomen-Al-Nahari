@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 import 'package:versomarket/core/util/ScreenUtil.dart';
 
+import '../../../../core/AppTheme.dart';
 import '../../../../injection_container.dart';
 import '../manager/ProductDeatils_bloc.dart';
 
@@ -45,6 +46,12 @@ class _ProductDeatilsPageState extends State<ProductDeatilsPage> {
   Widget build(BuildContext context) {
     screenUtil.init(context);
     return Scaffold(
+          appBar: AppBar(
+            backgroundColor: AppTheme.deepOrange,
+            title: Text("ProductDeatils",style: TextStyle(
+                fontSize: 28, fontWeight: FontWeight.bold, color: AppTheme.white),
+            ),
+          ),
       body: BlocProvider(
         create: (context) => sl<ProductDeatils_bloc>(),
         child: BlocConsumer<ProductDeatils_bloc, ProductDeatilsState>(

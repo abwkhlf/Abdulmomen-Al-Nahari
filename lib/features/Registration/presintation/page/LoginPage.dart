@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:versomarket/core/util/ScreenUtil.dart';
 import 'package:versomarket/core/util/common.dart';
+import 'package:versomarket/features/Home/presintation/page/HomePage.dart';
 import 'package:versomarket/features/Product/presintation/page/productsPage.dart';
 import '../../../../core/AppTheme.dart';
 import '../../../../injection_container.dart';
@@ -88,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               )..show();
               cachedData(key: "token", data: state.registrationModel.token);
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Product()));
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => homePage()));
             }
           },
           builder: (context, state) {

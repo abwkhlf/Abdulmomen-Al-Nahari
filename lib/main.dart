@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:versomarket/features/Home/presintation/page/HomePage.dart';
 import 'package:versomarket/features/Registration/presintation/page/LoginPage.dart';
 import 'core/util/common.dart';
+import 'features/Onboarding/presintation/page/OnboardingPage.dart';
 import 'injection_container.dart' as object;
+
 late final String token;
+late bool seenOnboarding;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await object.init();
   token = await getCachedData(key: "token", retrievedDataType: String, returnType: "") ?? "";
+
+  final prefs = await SharedPreferences.getInstance();
+  seenOnboarding = prefs.getBool("seenOnboarding") ?? false;
+
   runApp(const MyApp());
 }
 
@@ -39,7 +48,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:token==""? LoginPage() : homePage(),
+      home: (seenOnboarding || token.isNotEmpty) ? (token.isEmpty ? LoginPage() : homePage()) : OnboardingPage(),
     );
   }
 }
